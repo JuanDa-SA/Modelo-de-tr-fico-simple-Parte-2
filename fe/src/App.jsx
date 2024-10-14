@@ -61,11 +61,18 @@ export default function Home() {
 
 
       {/* <image x={0} y={240} href="./racing-car.png"/> */}
-      {
+      {/* {
         cars.map(car =>
-          <image id={car.id} x={car.pos[0]*32} y={220 + car.pos[1]*20} width={32} href={car.id == 1 ? "./dark-racing-car.png" : "./racing-car.png"}/>
+          <image id={car.id} x={330 + car.pos[0]*32} y={370 + car.pos[1]*20} width={32} href={car.id == 1 ? "./dark-racing-car.png" : "./racing-car.png"}/>
+        )
+      } */}
+
+{
+        cars.map(car =>
+          <image id={car.id} x={380} y={370 + car.pos[1]*20} width={32} href={car.id == 1 ? "./verde.png" : car.id == 2 ? "./amarillo.png" : "./rojito.png"}/>
         )
       }
+
       </svg>
     </main>
   );

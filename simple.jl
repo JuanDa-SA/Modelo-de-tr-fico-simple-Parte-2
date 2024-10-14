@@ -5,6 +5,9 @@ using StaticArrays: SVector
     accelerating::Bool = true
 end
 
+# @agent struct Semaforo(GridAgent{2})
+    
+
 accelerate(agent) = agent.vel[1] + 0.05
 decelerate(agent) = agent.vel[1] - 0.1
 
@@ -18,9 +21,13 @@ function car_ahead(agent, model)
     nothing
 end
 
-function  agent_step!(agent, model)
-    new_velocity = agent.accelerating ? accelerate(agent) : decelerate(agent)
+counter = 0
 
+function  agent_step!(agent, model)
+    global counter
+    new_velocity = isnothing(car_ahead(agent, model)) ? accelerate(agent) : decelerate(agent)
+
+    
     if new_velocity >= 1.0
         new_velocity = 1.0
         agent.accelerating = false
@@ -86,4 +93,4 @@ end
 #         print(SVector{2, Float64}(px, 0.0))
 #     end
 #     model
-# end
+
